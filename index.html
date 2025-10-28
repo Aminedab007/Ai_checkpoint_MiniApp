@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎬 Movie Explorer — Violet Glass</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <header class="appbar" role="banner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Movie Explorer</h1>
+          <div class="subtitle">Search films and browse beautiful glass cards. Theme: <strong>Violet</strong>.</div>
+        </div>
+      </div>
+      <div class="controls">
+        <div class="search" style="min-width: min(520px, 70vw);">
+          <input id="search-input" type="text" placeholder="Search for a movie... (e.g., Batman)" aria-label="Movie title" />
+          <button id="search-btn" class="btn" aria-label="Search">Search</button>
+        </div>
+        <button id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark">🌙</button>
+      </div>
+    </header>
+
+    <main id="movie-container" class="movie-grid" aria-live="polite"></main>
+    <div id="empty" class="empty" hidden>Start by searching for a movie title above.</div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document">
+      <div class="poster"><img id="modalPoster" alt="Movie poster" /></div>
+      <div class="info">
+        <button class="close" id="closeModal" aria-label="Close details">✕</button>
+        <h3 id="modalTitle">Title</h3>
+        <div class="details" id="modalMeta"></div>
+        <p id="modalPlot"></p>
+        <div id="modalTags"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js">
+  </script>
+</body>
+</html>

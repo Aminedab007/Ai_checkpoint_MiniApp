@@ -1,0 +1,148 @@
+
+    /* ============================
+       Design Tokens / Theme
+    =============================*/
+    :root {
+      --bg-start: #0f1026;
+      --bg-end: #1a1040;
+      --accent-1: #7c3aed; /* purple */
+      --accent-2: #6366f1; /* indigo */
+      --text: #e5e7eb;
+      --muted: #b6b9c6;
+      --card-bg: rgba(255,255,255,.08);
+      --card-br: 16px; /* rounded corners */
+      --border: rgba(255,255,255,.18);
+      --ring: rgba(124,58,237,.35);
+      --shadow: 0 16px 60px rgba(0,0,0,.35);
+    }
+
+    html[data-theme="light"] {
+      --bg-start: #f6f5ff;
+      --bg-end: #efeaff;
+      --text: #0f172a;
+      --muted: #475569;
+      --card-bg: rgba(255,255,255,.65);
+      --border: rgba(2,6,23,.12);
+      --ring: rgba(99,102,241,.35);
+      --shadow: 0 18px 50px rgba(2,6,23,.10);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background:
+       radial-gradient(1200px 600px at 10% -10%, color-mix(in oklab, var(--accent-1) 25%, transparent), transparent 35%),
+       radial-gradient(900px 500px at 120% 0%, color-mix(in oklab, var(--accent-2) 25%, transparent), transparent 40%),
+       linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      min-height: 100svh;
+    }
+
+    .wrapper { max-width: 1100px; margin: 0 auto; padding: 2rem clamp(1rem, 3vw, 2rem) 3rem; }
+
+    /* Header */
+    header.appbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .brand {
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .logo {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      box-shadow: 0 8px 24px color-mix(in oklab, var(--accent-1) 40%, transparent);
+    }
+    h1 { margin: 0; font-size: clamp(1.25rem, 2vw + .5rem, 2rem); letter-spacing: -.015em; }
+    .subtitle { color: var(--muted); font-size: .95rem; margin-top: .25rem; }
+
+    .controls { display: flex; gap: .6rem; align-items: center; justify-content: flex-end; }
+
+    .search {
+      display: flex; gap: .5rem; align-items: center; flex: 1;
+      padding: .6rem .7rem; border-radius: 999px; backdrop-filter: blur(10px);
+      background: var(--card-bg); border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .search input {
+      flex: 1; background: transparent; border: 0; outline: none;
+      color: var(--text); font-size: 1rem;
+    }
+
+    .btn, .icon-btn {
+      appearance: none; border: 0; cursor: pointer; color: white; font-weight: 700;
+      border-radius: 999px; padding: .7rem 1rem;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      box-shadow: 0 10px 26px color-mix(in oklab, var(--accent-2) 35%, transparent);
+      transition: transform .15s ease, filter .2s ease, box-shadow .2s ease;
+    }
+    .btn:hover { filter: brightness(1.05); }
+    .btn:active { transform: translateY(1px); }
+
+    #theme-toggle {
+      width: 44px; height: 44px; display: grid; place-items: center; padding: 0;
+      border-radius: 12px; background: var(--card-bg); border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    /* Grid */
+    .movie-grid {
+      display: grid; gap: clamp(1rem, 2.5vw, 1.5rem);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    @media (max-width: 980px) { .movie-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 620px) { .movie-grid { grid-template-columns: 1fr; } }
+
+    /* Card (Glassmorphism) */
+    .card {
+      position: relative; overflow: clip; border-radius: var(--card-br);
+      background: var(--card-bg); border: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      display: grid; grid-template-rows: auto 1fr auto; opacity: 0; transform: translateY(16px);
+      transition: transform .25s ease, box-shadow .25s ease, opacity .5s ease;
+    }
+    .card.show { opacity: 1; transform: translateY(0); }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.35); }
+
+    .poster { aspect-ratio: 2/3; background: #0b1020; }
+    .poster img { width: 100%; height: 100%; object-fit: cover; display: block; border-bottom: 1px solid var(--border); }
+    .poster img, .modal img { border-top-left-radius: var(--card-br); border-top-right-radius: var(--card-br); }
+
+    .content { padding: .9rem .9rem .6rem; display: grid; gap: .35rem; }
+    .title { font-weight: 800; letter-spacing: -.01em; font-size: 1.05rem; }
+    .meta { color: var(--muted); font-size: .9rem; }
+
+    .actions { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: 0 .9rem .9rem; }
+    .more { background: transparent; color: var(--text); border: 1px solid var(--border); padding: .6rem .9rem; border-radius: 10px; font-weight: 700; }
+    .more:hover { background: color-mix(in oklab, var(--accent-1) 10%, transparent); }
+
+    /* Empty state / helper */
+    .empty { text-align: center; color: var(--muted); padding: 3rem 1rem; }
+
+    /* Modal */
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.55); display: none; align-items: center; justify-content: center; z-index: 50; }
+    .modal-backdrop.show { display: flex; }
+    .modal { width: min(900px, 92vw); background: var(--card-bg); border: 1px solid var(--border); border-radius: 18px; box-shadow: var(--shadow); overflow: hidden; backdrop-filter: blur(12px); display: grid; grid-template-columns: 240px 1fr; }
+    @media (max-width: 720px) { .modal { grid-template-columns: 1fr; } }
+    .modal .info { padding: 1rem 1.1rem; display: grid; gap: .6rem; }
+    .modal h3 { margin: 0; font-size: 1.35rem; }
+    .tag { display: inline-block; padding: .25rem .5rem; border-radius: 999px; font-size: .75rem; font-weight: 700; color: white; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); }
+    .close { justify-self: end; background: transparent; border: 1px solid var(--border); color: var(--text); border-radius: 10px; padding: .45rem .7rem; cursor: pointer; }
+    .details { color: var(--muted); }
+
+    /* Accessibility focus */
+    :focus-visible { outline: none; box-shadow: 0 0 0 3px var(--ring); }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+      .card, .btn, .more { transition: none !important; }
+    }
+  
