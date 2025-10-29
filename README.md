@@ -52,8 +52,8 @@ https://www.omdbapi.com/?apikey=VOTRE_API_KEY&s=batman
 🔗 Liens à soumettre 
 | Description     | URL Exemple                                                                                |
 | --------------- | ------------------------------------------------------------------------------------------ |
-| ✅ GitHub Repo   | [https://github.com/Aminedab007/movie-explorer](https://github.com/Aminedab007/movie-explorer) |
-| 🌐 App Déployée | [https://Aminedab007.github.io/movie-explorer](https://Aminedab007.github.io/movie-explorer)   |
+| ✅ GitHub Repo   | [https://github.com/Aminedab007/Ai_checkpoint_MiniApp.git](https://github.com/Aminedab007/Ai_checkpoint_MiniApp.git) |
+| 🌐 App Déployée | [https://aminedab007.github.io/Ai_checkpoint_MiniApp/](https://aminedab007.github.io/Ai_checkpoint_MiniApp/)   |
 
 
 🧠 Technologies Utilisées
